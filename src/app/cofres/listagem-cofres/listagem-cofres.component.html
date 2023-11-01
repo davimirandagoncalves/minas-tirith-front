@@ -1,0 +1,35 @@
+<div class="grid">
+  <div class="col-12">
+    <p-breadcrumb class="max-w-full" [model]="breadcrumbItems" [home]="homeItem"></p-breadcrumb>
+  </div>
+  <div class="col-12">
+    <p-card header="Lista de cofres">
+      <p-table [value]="cofres" styleClass="shadow-1">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Nome Cofre</th>
+                <th>Valor</th>
+                <th>Objetivo</th>
+                <th>Progresso</th>
+                <th>Status</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-cofre>
+            <tr>
+                <td>
+                  <a [routerLink]="[cofre.id]" class="no-underline hover:underline">
+                    {{ cofre.nome }}
+                  </a>
+                </td>
+                <td>{{ cofre.valor }}</td>
+                <td>{{ cofre.objetivo }}</td>
+                <td><p-progressBar [value]="cofre.progresso"></p-progressBar></td>
+                <td><app-cofre-status [status]="cofre.status"></app-cofre-status></td>
+              </tr>
+        </ng-template>
+      </p-table>
+
+      <button class="p-button-success w-15rem mt-4" pButton (click)="adicionarCofre()" label="Adcionar"></button>
+    </p-card>
+  </div>
+</div>

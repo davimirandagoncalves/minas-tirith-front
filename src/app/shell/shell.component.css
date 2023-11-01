@@ -1,0 +1,17 @@
+::ng-deep .app-name {
+  right: 0px;
+  position: absolute;
+  pointer-events: none;
+}
+
+.container-padding {
+  padding: 16px;
+}
+
+::ng-deep .shadow-bg-red-500:focus {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #f7a2a2, 0 1px 2px 0 black;
+}
+
+::ng-deep .shadow-bg-gray-500:focus {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #b0b9c6, 0 1px 2px 0 black;
+}

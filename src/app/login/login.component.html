@@ -1,0 +1,14 @@
+<div class="login-container">
+  <aside id="login"></aside>
+  <main>
+    <div class="flex flex-column align-content-center flex-wrap">
+      <img src="/assets/minas-tirith-title.png" class="mb-4">
+      <div class="flex align-items-center justify-content-center justify-content-center">
+        <firebase-ui
+          (signInSuccessWithAuthResult)="successCallback($event)"
+          (signInFailure)="errorCallback($event)"
+        ></firebase-ui>
+      </div>
+    </div>
+  </main>
+</div>

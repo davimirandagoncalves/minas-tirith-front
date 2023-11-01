@@ -1,0 +1,70 @@
+<form [formGroup]="transacaoForm">
+  <div class="formgrid grid">
+    <div class="field col-12">
+      <label for="valor">Valor</label>
+      <p-inputNumber
+        [ngClass]="{ 'w-full': true }"
+        inputId="valor"
+        formControlName="valor"
+        mode="currency"
+        [currency]="transacaoForm.get('_moeda')?.value"
+      />
+      <app-error-message
+        [control]="transacaoForm.get('valor')"
+      ></app-error-message>
+    </div>
+
+    <div class="field col-12">
+      <label for="data">Data</label>
+      <p-calendar
+        styleClass="w-full"
+        inputId="data"
+        formControlName="data"
+        [showIcon]="true"
+        dateFormat="dd/mm/yy"
+        [showButtonBar]="true"
+      ></p-calendar>
+      <app-error-message
+        [control]="transacaoForm.get('data')"
+      ></app-error-message>
+    </div>
+
+    <div class="field col-12">
+      <label for="descricao">Descrição</label>
+      <textarea
+        class="w-full"
+        id="descricao"
+        rows="5"
+        cols="30"
+        pInputTextarea
+        formControlName="descricao"
+      ></textarea>
+      <app-error-message
+        [control]="transacaoForm.get('descricao')"
+      ></app-error-message>
+    </div>
+
+    <div class="field col-12">
+      <p-button
+        styleClass="mr-3"
+        (onClick)="salvar()"
+        pRipple
+        label="Salvar"
+      ></p-button>
+      <p-button
+        styleClass="mr-3"
+        (onClick)="remover()"
+        pRipple
+        severity="danger"
+        label="remover"
+      ></p-button>
+      <p-button
+        pRipple
+        severity="secondary"
+        (click)="isEdit ? voltar(2) : voltar(3)"
+        label="Voltar"
+      ></p-button>
+    </div>
+  </div>
+</form>
+{{ transacaoForm.value | json }}
