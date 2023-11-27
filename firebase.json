@@ -8,13 +8,5 @@
       "port": 9100
     },
     "singleProjectMode": true
-  },
-  "hosting": {
-    "source": "/src",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ]
   }
 }
