@@ -1,10 +1,26 @@
 FROM node:18-alpine as angular
+
 WORKDIR /app
 COPY . .
 RUN npm install
+
+ARG API_KEY 
+ARG AUTH_DOMAIN 
+ARG PROJECT_ID 
+ARG STORAGE_BUCKET
+ARG MESSAGING_SENDER_ID 
+ARG APP_ID
+ARG MEASUREMENT_ID
+
+ENV API_KEY=${API_KEY} 
+ENV AUTH_DOMAIN=${AUTH_DOMAIN} 
+ENV PROJECT_ID=${PROJECT_ID} 
+ENV STORAGE_BUCKET=${STORAGE_BUCKET}
+ENV MESSAGING_SENDER_ID=${MESSAGING_SENDER_ID} 
+ENV APP_ID=${APP_ID}
+ENV MEASUREMENT_ID=${MEASUREMENT_ID}
+
 RUN npm run build --prod
 
 FROM nginx:alpine
-# VOLUME /var/cache/nginx
 COPY --from=angular app/dist/minas-tirith /usr/share/nginx/html
-# COPY ./config/nginx.conf /etc/nginx/conf.d/default.conf
